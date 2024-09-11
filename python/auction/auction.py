@@ -1,7 +1,8 @@
 
 class AuctionEventListener:
     # TODO: add methods here
-    pass
+    def notify(self, message):
+        return message
 
 class AuctionMessageTranslator:
     def __init__(self, listener: AuctionEventListener):
@@ -9,7 +10,7 @@ class AuctionMessageTranslator:
 
     def process_message(self, message: str):
         if "CLOSE" in message:
-            pass
+            self.listener.notify("Auction Closed")
             # bug: should notify listener
         elif "PRICE" in message:
             data = {}

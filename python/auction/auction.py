@@ -23,7 +23,10 @@ class AuctionMessageTranslator:
             current_price = int(data["CurrentPrice"])
             increment = int(data["Increment"])
             bidder = data["Bidder"]
+            # 'Someone else bid 199'
+            notification_message = f"{bidder} bid {current_price+increment}"
 
+            self.listener.notify(notification_message)
             # bug: should notify listener
         else:
             # bug: should notify listener

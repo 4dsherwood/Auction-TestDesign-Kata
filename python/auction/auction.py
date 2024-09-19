@@ -11,7 +11,7 @@ class AuctionMessageTranslator:
     def process_message(self, message: str):
         if "CLOSE" in message:
             self.listener.notify("Auction Closed")
-            # bug: should notify listener
+
         elif "PRICE" in message:
             data = {}
             for element in message.split(";"):
@@ -27,9 +27,9 @@ class AuctionMessageTranslator:
             notification_message = f"{bidder} bid {current_price+increment}"
 
             self.listener.notify(notification_message)
-            # bug: should notify listener
+
         else:
-            # bug: should notify listener
+
             self.listener.notify("ERROR: Received a Blank Message")
             pass
 

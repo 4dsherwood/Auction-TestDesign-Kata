@@ -58,5 +58,27 @@ def test_notifies_bid_details_when_price_message_received():
     verify(mock_listener.notifications)
 
 def test_notifies_bid_details_when_price_message_received_blank():
-    message = "SOLVersion: 1.1; Event: PRICE; CurrentPrice: 192; Increment: 7; Bidder: Someone else;"
-    # TODO: write a test for this message translation
+    # message = "SOLVersion: 1.1; Event: PRICE; CurrentPrice: 192; Increment: 7; Bidder: Someone else;"
+    # # TODO: write a test for this message translation
+
+    # Arrange: Set up the translator and mock listener
+    class MockListener(AuctionEventListener):
+        def __init__(self):
+            self.notifications = []
+
+        def notify(self,message):
+            self.notifications.append(message)
+
+    # Create an instance of the mock listener
+    mock_listener = MockListener()
+
+    # Create an instance of the message translator using the mock listener
+    translator = AuctionMessageTranslator(mock_listener)
+
+    # Act: Send the test message through the translator
+    #message = "SOLVersion: 1.1; Event: PRICE; CurrentPrice: 192; Increment: 7; Bidder: Someone else;"
+    message = ""
+    translator.process_message(message)
+
+    # Assert: Verify the output using ApprovalTests
+    verify(mock_listener.notifications)

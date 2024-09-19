@@ -37,7 +37,7 @@ def test_notifies_auction_closed_when_close_message_received_using_mock():
     translator.process_message(message)
 
     # Assert: Verify the output using ApprovalTests
-    verify(mock_listener.notifications)
+    verify(mock_listener.notifications,  reporter=reporter)
 
 
 def test_notifies_bid_details_when_price_message_received():

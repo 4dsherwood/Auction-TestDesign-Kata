@@ -1,1 +1,1 @@
-["ERROR: Received a Blank Message"]
+['ERROR: Received a Blank Message']

@@ -30,5 +30,6 @@ class AuctionMessageTranslator:
             # bug: should notify listener
         else:
             # bug: should notify listener
+            self.listener.notify("ERROR: Received a Blank Message")
             pass
 

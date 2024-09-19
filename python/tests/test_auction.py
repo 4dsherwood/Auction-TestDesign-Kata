@@ -7,16 +7,16 @@ from auction.auction import AuctionEventListener, AuctionMessageTranslator
 #from auction import *
 #from AuctionEventListener import *
 
+# Arrange: Set up the translator and mock listener
+class MockListener(AuctionEventListener):
+    def __init__(self):
+        self.notifications = []
+
+    def notify(self,message):
+        self.notifications.append(message)
 
 
 def test_notifies_auction_closed_when_close_message_received_using_mock():
-    # Arrange: Set up the translator and mock listener
-    class MockListener(AuctionEventListener):
-        def __init__(self):
-            self.notifications = []
-
-        def notify(self,message):
-            self.notifications.append(message)
 
     # Create an instance of the mock listener
     mock_listener = MockListener()
@@ -33,14 +33,6 @@ def test_notifies_auction_closed_when_close_message_received_using_mock():
 
 
 def test_notifies_bid_details_when_price_message_received():
-    # Arrange: Set up the translator and mock listener
-    class MockListener(AuctionEventListener):
-        def __init__(self):
-            self.notifications = []
-
-        def notify(self,message):
-            self.notifications.append(message)
-
     # Create an instance of the mock listener
     mock_listener = MockListener()
 
@@ -57,14 +49,6 @@ def test_notifies_bid_details_when_price_message_received():
 def test_notifies_bid_details_when_price_message_received_blank():
     # message = "SOLVersion: 1.1; Event: PRICE; CurrentPrice: 192; Increment: 7; Bidder: Someone else;"
     # # TODO: write a test for this message translation
-
-    # Arrange: Set up the translator and mock listener
-    class MockListener(AuctionEventListener):
-        def __init__(self):
-            self.notifications = []
-
-        def notify(self,message):
-            self.notifications.append(message)
 
     # Create an instance of the mock listener
     mock_listener = MockListener()

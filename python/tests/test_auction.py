@@ -1,11 +1,6 @@
 import pytest
 from approvaltests import verify
 
-from approvaltests.reporters.generic_diff_reporter_factory import GenericDiffReporterFactory
-factory = GenericDiffReporterFactory()
-#print(factory.get_available_reporters())
-reporter = GenericDiffReporterFactory().get_first_working()
-
 from auction.auction import AuctionEventListener, AuctionMessageTranslator
 
 #from .auction import *   # E   ModuleNotFoundError: No module named 'tests.auction'
@@ -37,7 +32,7 @@ def test_notifies_auction_closed_when_close_message_received_using_mock():
     translator.process_message(message)
 
     # Assert: Verify the output using ApprovalTests
-    verify(mock_listener.notifications,  reporter=reporter)
+    verify(mock_listener.notifications)
 
 
 def test_notifies_bid_details_when_price_message_received():
@@ -60,7 +55,7 @@ def test_notifies_bid_details_when_price_message_received():
     translator.process_message(message)
 
     # Assert: Verify the output using ApprovalTests
-    verify(mock_listener.notifications, reporter=reporter)
+    verify(mock_listener.notifications)
 
 def test_notifies_bid_details_when_price_message_received_blank():
     message = "SOLVersion: 1.1; Event: PRICE; CurrentPrice: 192; Increment: 7; Bidder: Someone else;"

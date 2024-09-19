@@ -12,3 +12,13 @@ Write tests for a new message type: "CLOSE_NO_SALE" which tells you the reserve 
 Acknowledgements
 ----------------
 This is inspired by the example in the book "Growing Object Oriented Software, Guided by Tests" by Steve Freeman and Nat Pryce
+
+  ~~~--------~~~~~ Our observations ~~~~~ -----
+TDD
+Write tests that expose the bugs.
+
+"CLOSE_NO_SALE"  might be related to the Reserve price
+new message type: "CLOSE_NO_SALE"
+notify the listener:
+1) auction closed
+2) ReservePrice = 200
